@@ -5,7 +5,7 @@ text.
 
 ## Visualisation
 
-TBD
+![Visualisation](sad.gif)
 
 ## Description
 

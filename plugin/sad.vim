@@ -28,4 +28,6 @@ xmap S <Plug>(sad-change-selected-backward)
 nmap s <Plug>(sad-change-word-forward)
 nmap S <Plug>(sad-change-word-backward)
 
+command! -bang Sad call sad#be_happy(<bang>0)
+
 let &cpo = s:save_cpo

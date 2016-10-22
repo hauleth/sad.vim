@@ -23,3 +23,11 @@ function! sad#vsearch_and_replace_backward(type, ...)
   call call('sad#vsearch', [a:type] + a:000)
   call feedkeys('cgN', 'n')
 endfunction
+
+function! sad#be_happy(bang)
+  if a:bang
+    echom "Be happy now."
+  else
+    echom "Don't worry, be happy!"
+  endif
+endfunction
