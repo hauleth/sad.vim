@@ -23,8 +23,14 @@ REPLACE                                    *sad-replace*
 s{motion}           Delete {motion} text and start insert. Afterwards |.| can
                     be used to replace next occurence of deleted text.
 
+                                           *ss*
+ss                  The same as "Vs".
+
                                            *S*
 S{motion}           Same as |s| but then replaces previous occurence.
+
+                                           *SS*
+SS                  The same as "VS".
 
                                            *v_s*
 {Visual}s           Delete highlighted text, set search to it and start insert
