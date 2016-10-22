@@ -1,0 +1,11 @@
+S	sad.txt	/*S*
+s	sad.txt	/*s*
+sad	sad.txt	/*sad*
+sad-replace	sad.txt	/*sad-replace*
+sad-search	sad.txt	/*sad-search*
+sad.txt	sad.txt	/*sad.txt*
+v_#	sad.txt	/*v_#*
+v_S	sad.txt	/*v_S*
+v_s	sad.txt	/*v_s*
+v_star	sad.txt	/*v_star*
+vstar	sad.txt	/*vstar*

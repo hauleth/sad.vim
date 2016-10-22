@@ -1,0 +1,37 @@
+*sad.txt* Quick search and replace
+
+Author:  Łukasz Niemier <http://lukasz.niemier.pl>
+Repo:    https://github.com/hauleth/sad.vim
+License: MIT <https://opensource.org/licenses/MIT>
+
+INTRODUCTION                                    *sad*
+
+This plugin provides several handy shortcuts for quick search and replace.
+
+SEARCH                                          *sad-search*
+
+* *v_star* *vstar*           Search forward for visual selection
+# *v_#*                    Search backward for visual selection
+
+REPLACE                                         *sad-replace*
+
+
+                                                *s*
+s{motion}                Delete {motion} text and start insert. Afterwards
+                         |.| can be used to replace next occurence of deleted
+                         text.
+
+                                                *S*
+S{motion}                Same as |s| but then replaces previous occurence.
+
+                                                *v_s*
+{Visual}s                Delete highlighted text, set search to it and start
+                         insert (for {Visual} see |Visual-mode|). Afterwards
+                         |.| can be used to replace next occurences of
+                         selected text.
+
+                                                *v_S*
+{Visual}S                Same as |v_s| but then replaces previous occurence.
+
+
+ vim:tw=78:et:ft=help:norl:
