@@ -60,4 +60,10 @@ nmap <leader>S <Plug>(sad-change-word-backward)
 Not yet. And ever if there would be, then what is the point in telling you
 anyway?
 
+## Todo
+
+- [ ] allow setting register which will contain changed text
+- [ ] do not remap `s` and `S` if there already exist any mapping
+- [ ] turn search highlight right after `s{movement}`
+
 [vim-sneak]: https://github.com/justinmk/vim-sneak
