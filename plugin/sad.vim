@@ -16,8 +16,8 @@ xnoremap <Plug>(sad-search-selected-backward) :<C-u>call sad#vsearch(visualmode(
 xnoremap <Plug>(sad-change-selected-forward) :<C-u>call sad#vsearch(visualmode(), 1)<CR>:set hlsearch<CR>cgn
 xnoremap <Plug>(sad-change-selected-backward) :<C-u>call sad#vsearch(visualmode(), 1)<CR>:set hlsearch<CR>cgN
 
-nnoremap <Plug>(sad-change-movement-forward) :set operatorfunc=sad#vsearch_and_replace_forward<CR>g@
-nnoremap <Plug>(sad-change-movement-backward) :set operatorfunc=sad#vsearch_and_replace_backward<CR>g@
+nnoremap <Plug>(sad-change-movement-forward) :<C-u>set operatorfunc=sad#vsearch_and_replace_forward<CR>g@
+nnoremap <Plug>(sad-change-movement-backward) :<C-u>set operatorfunc=sad#vsearch_and_replace_backward<CR>g@
 
 xmap * <Plug>(sad-search-selected-forward)
 xmap # <Plug>(sad-search-selected-backward)
@@ -28,8 +28,8 @@ xmap S <Plug>(sad-change-selected-backward)
 nmap s <Plug>(sad-change-movement-forward)
 nmap S <Plug>(sad-change-movement-backward)
 
-nmap ss sg_
-nmap SS Sg_
+nmap <expr> ss '0s'.v:count1.'g_'
+nmap <expr> SS '0S'.v:count1.'g_'
 
 command! -bang Sad call sad#be_happy(<bang>0)
 
