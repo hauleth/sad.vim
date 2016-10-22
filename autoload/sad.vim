@@ -1,4 +1,4 @@
-function! sad#vsearch(type, ...)
+function! sad#search(type, ...)
   let l:temp = @@
   if a:0
     silent exe 'norm! gvy'
@@ -8,20 +8,27 @@ function! sad#vsearch(type, ...)
     silent exe 'normal! `[v`]y'
   endif
 
-  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-  call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
+  let l:search = @@
   let @@ = l:temp
+  let @/ = '\V' . substitute(escape(l:search, '\'), '\n', '\\n', 'g')
+  call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
   set hlsearch
+
+  return l:search
 endfunction
 
-function! sad#vsearch_and_replace_forward(type, ...)
-  call call('sad#vsearch', [a:type] + a:000)
-  call feedkeys('cgn', 'n')
+function! sad#search_and_replace_forward(type, ...)
+  let l:reg = v:register
+  let l:search = call('sad#search', [a:type] + a:000)
+  exe 'let @'.l:reg.' = "'.escape(l:search, '"').'"'
+  call feedkeys('"_cgn', 'n')
 endfunction
 
-function! sad#vsearch_and_replace_backward(type, ...)
-  call call('sad#vsearch', [a:type] + a:000)
-  call feedkeys('cgN', 'n')
+function! sad#search_and_replace_backward(type, ...)
+  let l:reg = v:register
+  let l:search = call('sad#search', [a:type] + a:000)
+  exe 'let @'.l:reg.' = "'.escape(l:search, '"').'"'
+  call feedkeys('"_cgN', 'n')
 endfunction
 
 function! sad#be_happy(bang)

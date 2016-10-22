@@ -62,7 +62,7 @@ anyway?
 
 ## Todo
 
-- [ ] allow setting register which will contain changed text
+- [x] ~~allow setting register which will contain changed text~~
 - [ ] do not remap `s` and `S` if there already exist any mapping
 - [ ] turn search highlight right after `s{movement}`
 
