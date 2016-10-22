@@ -20,27 +20,29 @@ REPLACE                                    *sad-replace*
 
 
                                            *s*
-s{motion}           Delete {motion} text and start insert. Afterwards |.| can
-                    be used to replace next occurence of deleted text.
+["x]s{motion}       Delete {motion} [into register x] text and start insert.
+                    Afterwards |.| can be used to replace next occurence
+                    of deleted text.
 
                                            *ss*
-{count}ss           Delete {count} lines downwards |linewise|. After that |.|
-                    will change next occurence of that lines.
+["x]{count}ss       Delete {count} lines [into register x] downwards |linewise|.
+                    After that |.| will change next occurence of that lines.
 
                                            *S*
-S{motion}           Same as |s| but then replaces previous occurence.
+["x]S{motion}       Same as |s| but then replaces previous occurence.
 
                                            *SS*
-{count}SS           Delete {count} lines downwards |linewise|. After that |.|
-                    will change previous occurence of that lines.
+["x]{count}SS       Delete {count} lines [into register x] downwards |linewise|.
+                    After that |.| will change previous occurence of that lines.
 
                                            *v_s*
-{Visual}s           Delete highlighted text, set search to it and start insert
-                    (for {Visual} see |Visual-mode|). Afterwards |.| can be used
-                    to replace next occurences of selected text.
+["x]{Visual}s       Delete selected text [into register x], set search to it
+                    and start insert (for {Visual} see |Visual-mode|).
+                    Afterwards |.| can be used to replace next occurences
+                    of selected text.
 
                                            *v_S*
-{Visual}S           Same as |v_s| but then replaces previous occurence.
+["x]{Visual}S       Same as |v_s| but then replaces previous occurence.
 
 
  vim:tw=78:et:ft=help:norl:
