@@ -59,3 +59,5 @@ nmap <leader>S <Plug>(sad-change-word-backward)
 
 Not yet. And ever if there would be, then what is the point in telling you
 anyway?
+
+[vim-sneak]: https://github.com/justinmk/vim-sneak
