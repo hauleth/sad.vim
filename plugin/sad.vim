@@ -16,8 +16,8 @@ xnoremap <Plug>(sad-search-selected-backward) :<C-u>call sad#vsearch(visualmode(
 xnoremap <Plug>(sad-change-selected-forward) :<C-u>call sad#vsearch(visualmode(), 1)<CR>:set hlsearch<CR>cgn
 xnoremap <Plug>(sad-change-selected-backward) :<C-u>call sad#vsearch(visualmode(), 1)<CR>:set hlsearch<CR>cgN
 
-nnoremap <Plug>(sad-change-word-forward) :set operatorfunc=sad#vsearch_and_replace_forward<CR>g@
-nnoremap <Plug>(sad-change-word-backward) :set operatorfunc=sad#vsearch_and_replace_backward<CR>g@
+nnoremap <Plug>(sad-change-movement-forward) :set operatorfunc=sad#vsearch_and_replace_forward<CR>g@
+nnoremap <Plug>(sad-change-movement-backward) :set operatorfunc=sad#vsearch_and_replace_backward<CR>g@
 
 xmap * <Plug>(sad-search-selected-forward)
 xmap # <Plug>(sad-search-selected-backward)
@@ -25,8 +25,8 @@ xmap # <Plug>(sad-search-selected-backward)
 xmap s <Plug>(sad-change-selected-forward)
 xmap S <Plug>(sad-change-selected-backward)
 
-nmap s <Plug>(sad-change-word-forward)
-nmap S <Plug>(sad-change-word-backward)
+nmap s <Plug>(sad-change-movement-forward)
+nmap S <Plug>(sad-change-movement-backward)
 
 nmap ss sg_
 nmap SS Sg_
