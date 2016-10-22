@@ -28,8 +28,8 @@ xmap S <Plug>(sad-change-selected-backward)
 nmap s <Plug>(sad-change-word-forward)
 nmap S <Plug>(sad-change-word-backward)
 
-nmap ss Vs
-nmap SS VS
+nmap ss sg_
+nmap SS Sg_
 
 command! -bang Sad call sad#be_happy(<bang>0)
 
