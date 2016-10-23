@@ -19,17 +19,33 @@ xnoremap <expr><silent> <Plug>(sad-change-selected-backward) ':<C-u>call sad#sea
 nnoremap <expr><silent> <Plug>(sad-change-movement-forward) ':<C-u>set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
 nnoremap <expr><silent> <Plug>(sad-change-movement-backward) ':<C-u>set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
 
-xmap * <Plug>(sad-search-selected-forward)
-xmap # <Plug>(sad-search-selected-backward)
+if mapcheck('*', 'x') ==# ""
+  xmap * <Plug>(sad-search-selected-forward)
+endif
+if mapcheck('#', 'x') ==# ""
+  xmap # <Plug>(sad-search-selected-backward)
+endif
 
-xmap s <Plug>(sad-change-selected-forward)
-xmap S <Plug>(sad-change-selected-backward)
+if mapcheck('s', 'x') ==# ""
+  xmap s <Plug>(sad-change-selected-forward)
+endif
+if mapcheck('S', 'x') ==# ""
+  xmap S <Plug>(sad-change-selected-backward)
+endif
 
-nmap s <Plug>(sad-change-movement-forward)
-nmap S <Plug>(sad-change-movement-backward)
+if mapcheck('s', 'n') ==# ""
+  nmap s <Plug>(sad-change-movement-forward)
+endif
+if mapcheck('S', 'n') ==# ""
+  nmap S <Plug>(sad-change-movement-backward)
+endif
 
-nmap <expr> ss '0"'.v:register.'<Plug>(sad-change-movement-forward)'.v:count1.'g_'
-nmap <expr> SS '0"'.v:register.'<Plug>(sad-change-movement-backward)'.v:count1.'g_'
+if mapcheck('ss', 'n') ==# ""
+  nmap <expr> ss '0"'.v:register.'<Plug>(sad-change-movement-forward)'.v:count1.'g_'
+endif
+if mapcheck('SS', 'n') ==# ""
+  nmap <expr> SS '0"'.v:register.'<Plug>(sad-change-movement-backward)'.v:count1.'g_'
+endif
 
 command! -bang Sad call sad#be_happy(<bang>0)
 
