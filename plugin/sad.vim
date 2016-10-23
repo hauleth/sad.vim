@@ -3,48 +3,52 @@
 
 scriptencoding utf-8
 
-if exists('g:loaded_vsearch') || v:version < 700 || &cp
+if exists('g:loaded_sad_vim') || v:version < 700 || &cp
   finish
 endif
-let g:loaded_vsearch = 1
+let g:loaded_sad_vim = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-xnoremap <silent> <Plug>(sad-search-selected-forward) :<C-u>call sad#search(visualmode(), 1)<CR>/<CR>
-xnoremap <silent> <Plug>(sad-search-selected-backward) :<C-u>call sad#search(visualmode(), 1)<CR>?<CR>
+xnoremap <silent> <Plug>(sad-search-forward) :<C-u>call sad#search(visualmode(), 1)<CR>/<CR>
+xnoremap <silent> <Plug>(sad-search-backward) :<C-u>call sad#search(visualmode(), 1)<CR>?<CR>
 
-xnoremap <expr><silent> <Plug>(sad-change-selected-forward) ':<C-u>call sad#search(visualmode(), 1)<CR>"'.v:register.'cgn'
-xnoremap <expr><silent> <Plug>(sad-change-selected-backward) ':<C-u>call sad#search(visualmode(), 1)<CR>"'.v:register.'cgN'
+xnoremap <silent> <Plug>(sad-change-forward) :<C-u>call sad#search_and_replace_forward(visualmode(), 1)<CR>
+xnoremap <silent> <Plug>(sad-change-backward) :<C-u>call sad#search_and_replace_backward(visualmode(), 1)<CR>
 
-nnoremap <expr><silent> <Plug>(sad-change-movement-forward) ':<C-u>set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
-nnoremap <expr><silent> <Plug>(sad-change-movement-backward) ':<C-u>set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
+nnoremap <expr><silent> <Plug>(sad-change-forward) ':<C-u>set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
+nnoremap <expr><silent> <Plug>(sad-change-backward) ':<C-u>set opfunc=sad#search_and_replace_backward<CR>"'.v:register.'g@'
 
-if mapcheck('*', 'x') ==# ""
-  xmap * <Plug>(sad-search-selected-forward)
-endif
-if mapcheck('#', 'x') ==# ""
-  xmap # <Plug>(sad-search-selected-backward)
-endif
-
-if mapcheck('s', 'x') ==# ""
-  xmap s <Plug>(sad-change-selected-forward)
-endif
-if mapcheck('S', 'x') ==# ""
-  xmap S <Plug>(sad-change-selected-backward)
+if !hasmapto('<Plug>(sad-search-forward)') || !hasmapto('<Plug>(sad-search-backward)')
+  if mapcheck('*', 'x') ==# ""
+    xmap * <Plug>(sad-search-forward)
+  endif
+  if mapcheck('#', 'x') ==# ""
+    xmap # <Plug>(sad-search-backward)
+  endif
 endif
 
-if mapcheck('s', 'n') ==# ""
-  nmap s <Plug>(sad-change-movement-forward)
-endif
-if mapcheck('S', 'n') ==# ""
-  nmap S <Plug>(sad-change-movement-backward)
-endif
+if !hasmapto('<Plug>(sad-change-forward)') || !hasmapto('<Plug>(sad-change-backward)')
+  if mapcheck('s', 'x') ==# ""
+    xmap s <Plug>(sad-change-forward)
+  endif
+  if mapcheck('S', 'x') ==# ""
+    xmap S <Plug>(sad-change-backward)
+  endif
 
-if mapcheck('ss', 'n') ==# ""
-  nmap <expr> ss '0"'.v:register.'<Plug>(sad-change-movement-forward)'.v:count1.'g_'
-endif
-if mapcheck('SS', 'n') ==# ""
-  nmap <expr> SS '0"'.v:register.'<Plug>(sad-change-movement-backward)'.v:count1.'g_'
+  if mapcheck('s', 'n') ==# ""
+    nmap s <Plug>(sad-change-forward)
+  endif
+  if mapcheck('S', 'n') ==# ""
+    nmap S <Plug>(sad-change-backward)
+  endif
+
+  if mapcheck('ss', 'n') ==# ""
+    nmap <expr> ss '0"'.v:register.'<Plug>(sad-change-forward)'.v:count1.'g_'
+  endif
+  if mapcheck('SS', 'n') ==# ""
+    nmap <expr> SS '0"'.v:register.'<Plug>(sad-change-backward)'.v:count1.'g_'
+  endif
 endif
 
 command! -bang Sad call sad#be_happy(<bang>0)
