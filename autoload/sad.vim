@@ -12,9 +12,18 @@ function! sad#search(type, ...)
   let @@ = l:temp
   let @/ = '\V' . substitute(escape(l:search, '\'), '\n', '\\n', 'g')
   call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
-  set hlsearch
 
   return l:search
+endfunction
+
+function! sad#search_forward(type, ...)
+    call call('sad#search', [a:type] + a:000)
+    call feedkeys("/\<CR>", 'n')
+endfunction
+
+function! sad#search_backward(type, ...)
+    call call('sad#search', [a:type] + a:000)
+    call feedkeys("?\<CR>", 'n')
 endfunction
 
 function! sad#search_and_replace_forward(type, ...)

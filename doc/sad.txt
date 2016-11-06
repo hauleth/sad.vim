@@ -18,7 +18,6 @@ SEARCH                                     *sad-search*
 
 REPLACE                                    *sad-replace*
 
-
                                            *s*
 ["x]s{motion}       Delete {motion} [into register x] text and start insert.
                     Afterwards |.| can be used to replace next occurence
@@ -44,5 +43,14 @@ REPLACE                                    *sad-replace*
                                            *v_S*
 ["x]{Visual}S       Same as |v_s| but then replaces previous occurence.
 
+CONFIGURATION                              *sad-configuration*
+
+Default mappings
+
+    MAPPING NAME                    |Normal|        |Visual|
+<Plug>(sad-search-forward)          -             |v_star|
+<Plug>(sad-search-backward)         -             |v_#|
+<Plug>(sad-change-forward)          |s|             |v_s|
+<Plug>(sad-change-backward)         |S|             |v_S|
 
  vim:tw=78:et:ft=help:norl:

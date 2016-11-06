@@ -10,8 +10,11 @@ let g:loaded_sad_vim = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-xnoremap <silent> <Plug>(sad-search-forward) :<C-u>call sad#search(visualmode(), 1)<CR>/<CR>
-xnoremap <silent> <Plug>(sad-search-backward) :<C-u>call sad#search(visualmode(), 1)<CR>?<CR>
+xnoremap <silent> <Plug>(sad-search-forward) :<C-u>call sad#search_forward(visualmode(), 1)<CR>
+xnoremap <silent> <Plug>(sad-search-backward) :<C-u>call sad#search_backward(visualmode(), 1)<CR>
+
+nnoremap <silent> <Plug>(sad-search-forward) :<C-u>set opfunc=sad#search_forward<CR>g@
+nnoremap <silent> <Plug>(sad-search-backward) :<C-u>set opfunc=sad#search_backward<CR>g@
 
 xnoremap <silent> <Plug>(sad-change-forward) :<C-u>call sad#search_and_replace_forward(visualmode(), 1)<CR>
 xnoremap <silent> <Plug>(sad-change-backward) :<C-u>call sad#search_and_replace_backward(visualmode(), 1)<CR>
