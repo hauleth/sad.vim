@@ -51,8 +51,8 @@ Just use `c_` or `cc`.
 Create your own maps:
 
 ```vim
-nmap <leader>s <Plug>(sad-change-movement-forward)
-nmap <leader>S <Plug>(sad-change-movement-backward)
+nmap <leader>s <Plug>(sad-change-forward)
+nmap <leader>S <Plug>(sad-change-backward)
 ```
 
 ### Are there any easter eggs about name?
