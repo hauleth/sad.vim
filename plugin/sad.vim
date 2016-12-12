@@ -22,6 +22,9 @@ xnoremap <silent> <Plug>(sad-change-backward) :<C-u>call sad#search_and_replace_
 nnoremap <expr><silent> <Plug>(sad-change-forward) ':<C-u>set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
 nnoremap <expr><silent> <Plug>(sad-change-backward) ':<C-u>set opfunc=sad#search_and_replace_backward<CR>"'.v:register.'g@'
 
+nmap <expr> <Plug>(sad-change-forward-linewise) '0"'.v:register.'<Plug>(sad-change-forward)'.v:count1.'g_'
+nmap <expr> <Plug>(sad-change-backward-linewise) '0"'.v:register.'<Plug>(sad-change-backward)'.v:count1.'g_'
+
 if !hasmapto('<Plug>(sad-search-forward)') || !hasmapto('<Plug>(sad-search-backward)')
   if mapcheck('*', 'x') ==# ""
     xmap * <Plug>(sad-search-forward)
@@ -47,10 +50,10 @@ if !hasmapto('<Plug>(sad-change-forward)') || !hasmapto('<Plug>(sad-change-backw
   endif
 
   if mapcheck('ss', 'n') ==# ""
-    nmap <expr> ss '0"'.v:register.'<Plug>(sad-change-forward)'.v:count1.'g_'
+    nmap ss <Plug>(sad-change-forward-linewise)
   endif
   if mapcheck('SS', 'n') ==# ""
-    nmap <expr> SS '0"'.v:register.'<Plug>(sad-change-backward)'.v:count1.'g_'
+    nmap SS <Plug>(sad-change-backward-linewise)
   endif
 endif
 

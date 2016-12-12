@@ -2,6 +2,7 @@ S	sad.txt	/*S*
 SS	sad.txt	/*SS*
 s	sad.txt	/*s*
 sad	sad.txt	/*sad*
+sad-configuration	sad.txt	/*sad-configuration*
 sad-replace	sad.txt	/*sad-replace*
 sad-search	sad.txt	/*sad-search*
 sad.txt	sad.txt	/*sad.txt*
