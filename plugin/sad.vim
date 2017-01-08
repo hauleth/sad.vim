@@ -4,7 +4,7 @@
 scriptencoding utf-8
 
 if exists('g:loaded_sad_vim') || v:version < 700 || &cp
-  finish
+    finish
 endif
 let g:loaded_sad_vim = 1
 let s:save_cpo = &cpo
@@ -26,35 +26,19 @@ nmap <expr> <Plug>(sad-change-forward-linewise) '0"'.v:register.'<Plug>(sad-chan
 nmap <expr> <Plug>(sad-change-backward-linewise) '0"'.v:register.'<Plug>(sad-change-backward)'.v:count1.'g_'
 
 if !hasmapto('<Plug>(sad-search-forward)') || !hasmapto('<Plug>(sad-search-backward)')
-  if mapcheck('*', 'x') ==# ""
     xmap * <Plug>(sad-search-forward)
-  endif
-  if mapcheck('#', 'x') ==# ""
     xmap # <Plug>(sad-search-backward)
-  endif
 endif
 
 if !hasmapto('<Plug>(sad-change-forward)') || !hasmapto('<Plug>(sad-change-backward)')
-  if mapcheck('s', 'x') ==# ""
     xmap s <Plug>(sad-change-forward)
-  endif
-  if mapcheck('S', 'x') ==# ""
     xmap S <Plug>(sad-change-backward)
-  endif
 
-  if mapcheck('s', 'n') ==# ""
     nmap s <Plug>(sad-change-forward)
-  endif
-  if mapcheck('S', 'n') ==# ""
     nmap S <Plug>(sad-change-backward)
-  endif
 
-  if mapcheck('ss', 'n') ==# ""
     nmap ss <Plug>(sad-change-forward-linewise)
-  endif
-  if mapcheck('SS', 'n') ==# ""
     nmap SS <Plug>(sad-change-backward-linewise)
-  endif
 endif
 
 command! -bang Sad call sad#be_happy(<bang>0)
