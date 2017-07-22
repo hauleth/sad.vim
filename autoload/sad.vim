@@ -10,7 +10,7 @@ function! sad#search(type, ...)
 
     let l:search = @v
     let @v = l:temp
-    let @/ = '\V\c' . substitute(escape(l:search, '\'), '\n', '\\n', 'g')
+    let @/ = '\V\C' . substitute(escape(l:search, '\'), '\n', '\\n', 'g')
     call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
     let &hlsearch = 1
 
@@ -34,7 +34,7 @@ function! sad#search_and_replace_forward(type, ...)
     endif
     let l:search = call('sad#search', [a:type] + a:000)
     exe 'let @'.v:register.' = "'.escape(l:search, '"').'"'
-    call feedkeys('"_cgn', 'n')
+    call feedkeys('"'.v:register.'cgn', 'n')
 endfunction
 
 function! sad#search_and_replace_backward(type, ...)
@@ -44,7 +44,7 @@ function! sad#search_and_replace_backward(type, ...)
     endif
     let l:search = call('sad#search', [a:type] + a:000)
     exe 'let @'.v:register.' = "'.escape(l:search, '"').'"'
-    call feedkeys('"_cgN', 'n')
+    call feedkeys('"'.v:register.'cgN', 'n')
 endfunction
 
 function! sad#be_happy(bang)
