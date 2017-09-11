@@ -38,11 +38,6 @@ endif
 nmap <expr> <Plug>(sad-change-forward-linewise) '0"'.v:register.'<Plug>(sad-change-forward)'.v:count1.'g_'
 nmap <expr> <Plug>(sad-change-backward-linewise) '0"'.v:register.'<Plug>(sad-change-backward)'.v:count1.'g_'
 
-if !hasmapto('<Plug>(sad-change-forward-linewise)') && !hasmapto('<Plug>(sad-change-backward-linewise)')
-    nmap ss <Plug>(sad-change-forward-linewise)
-    nmap SS <Plug>(sad-change-backward-linewise)
-endif
-
 command! -bang Sad call sad#be_happy(<bang>0)
 
 let &cpo = s:save_cpo
