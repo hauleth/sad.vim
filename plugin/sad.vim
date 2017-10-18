@@ -10,17 +10,17 @@ let g:loaded_sad_vim = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-xnoremap <silent> <Plug>(sad-search-forward) :<C-u>call sad#search_forward(visualmode(), 1)<CR>
-xnoremap <silent> <Plug>(sad-search-backward) :<C-u>call sad#search_backward(visualmode(), 1)<CR>
+xnoremap <silent> <Plug>(sad-search-forward) :<C-u>let @/=''\|let v:hlsearch=1\|call sad#search_forward(visualmode(), 1)<CR>
+xnoremap <silent> <Plug>(sad-search-backward) :<C-u>let @/=''\|let v:hlsearch=1\|call sad#search_backward(visualmode(), 1)<CR>
 
-nnoremap <silent> <Plug>(sad-search-forward) :<C-u>set opfunc=sad#search_forward<CR>g@
-nnoremap <silent> <Plug>(sad-search-backward) :<C-u>set opfunc=sad#search_backward<CR>g@
+nnoremap <silent> <Plug>(sad-search-forward) :<C-u>let @/=''\|let v:hlsearch=1\|set opfunc=sad#search_forward<CR>g@
+nnoremap <silent> <Plug>(sad-search-backward) :<C-u>let @/=''\|let v:hlsearch=1\|set opfunc=sad#search_backward<CR>g@
 
-xnoremap <silent> <Plug>(sad-change-forward) :<C-u>call sad#search_and_replace_forward(visualmode(), 1)<CR>
-xnoremap <silent> <Plug>(sad-change-backward) :<C-u>call sad#search_and_replace_backward(visualmode(), 1)<CR>
+xnoremap <silent> <Plug>(sad-change-forward) :<C-u>let @/=''\|let v:hlsearch=1\|call sad#search_and_replace_forward(visualmode(), 1)<CR>
+xnoremap <silent> <Plug>(sad-change-backward) :<C-u>let @/=''\|let v:hlsearch=1\|call sad#search_and_replace_backward(visualmode(), 1)<CR>
 
-nnoremap <expr><silent> <Plug>(sad-change-forward) ':<C-u>set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
-nnoremap <expr><silent> <Plug>(sad-change-backward) ':<C-u>set opfunc=sad#search_and_replace_backward<CR>"'.v:register.'g@'
+nnoremap <expr><silent> <Plug>(sad-change-forward) ':<C-u>let @/=""\|let v:hlsearch=1\|set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
+nnoremap <expr><silent> <Plug>(sad-change-backward) ':<C-u>let @/=""\|let v:hlsearch=1\|set opfunc=sad#search_and_replace_backward<CR>"'.v:register.'g@'
 
 if !hasmapto('<Plug>(sad-search-forward)') && !hasmapto('<Plug>(sad-search-backward)')
     xmap * <Plug>(sad-search-forward)
