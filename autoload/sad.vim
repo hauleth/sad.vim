@@ -12,7 +12,8 @@ function! sad#search(type, ...)
     let @v = l:temp
     let @/ = '\V\C' . substitute(escape(l:search, '\'), '\n', '\\n', 'g')
     call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
-    let &hlsearch = 1
+    setlocal hlsearch
+    redraw
 
     return l:search
 endfunction
