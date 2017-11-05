@@ -1,5 +1,5 @@
 " sad.vim - simplify visual search
-" Maintainer:   Łukasz Niemier <http://lukasz.niemier.pl>
+" Maintainer: Łukasz Niemier <lukasz@niemier.pl>
 
 scriptencoding utf-8
 
@@ -41,3 +41,4 @@ nmap <expr> <Plug>(sad-change-backward-linewise) '0"'.v:register.'<Plug>(sad-cha
 command! -bang Sad call sad#be_happy(<bang>0)
 
 let &cpo = s:save_cpo
+unlet s:save_cpo
