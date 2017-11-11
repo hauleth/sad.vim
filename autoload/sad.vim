@@ -1,8 +1,8 @@
-function! sad#search(type, ...)
+function! sad#search(type, ...) abort
     let l:temp = @v
     if a:0
         silent exe 'norm! gv"vy'
-    elseif a:type ==# 'line'
+    elseif a:type is# 'line'
         silent exe "normal! '[V']\"vy"
     else
         silent exe 'normal! `[v`]"vy'
@@ -16,18 +16,18 @@ function! sad#search(type, ...)
     return l:search
 endfunction
 
-function! sad#search_forward(type, ...)
+function! sad#search_forward(type, ...) abort
     call call('sad#search', [a:type] + a:000)
     call feedkeys("/\<CR>", 'n')
 endfunction
 
-function! sad#search_backward(type, ...)
+function! sad#search_backward(type, ...) abort
     call call('sad#search', [a:type] + a:000)
     call feedkeys("?\<CR>", 'n')
 endfunction
 
-function! sad#search_and_replace_forward(type, ...)
-    if visualmode() ==# ''
+function! sad#search_and_replace_forward(type, ...) abort
+    if visualmode() is# ''
         call feedkeys('gv"'.v:register.'c', 'n')
         return
     endif
@@ -36,8 +36,8 @@ function! sad#search_and_replace_forward(type, ...)
     call feedkeys('"'.v:register.'cgn', 'n')
 endfunction
 
-function! sad#search_and_replace_backward(type, ...)
-    if visualmode() ==# ''
+function! sad#search_and_replace_backward(type, ...) abort
+    if visualmode() is# ''
         call feedkeys('gv"'.v:register.'c', 'n')
         return
     endif
@@ -46,9 +46,9 @@ function! sad#search_and_replace_backward(type, ...)
     call feedkeys('"'.v:register.'cgN', 'n')
 endfunction
 
-function! sad#be_happy(bang)
+function! sad#be_happy(bang) abort
     if a:bang
-        echom "Be happy now."
+        echom 'Be happy now.'
     else
         echom "Don't worry, be happy!"
     endif

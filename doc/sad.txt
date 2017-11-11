@@ -1,6 +1,6 @@
 *sad.txt* Quick search and replace
 
-Author:  Łukasz Niemier <http://lukasz.niemier.pl>
+Author:  Hauleth <http://lukasz.niemier.pl>
 Repo:    https://github.com/hauleth/sad.vim
 License: MIT <https://opensource.org/licenses/MIT>
 

@@ -1,7 +1,5 @@
 " sad.vim - simplify visual search
-" Maintainer: Łukasz Niemier <lukasz@niemier.pl>
-
-scriptencoding utf-8
+" Maintainer: Hauleth <lukasz@niemier.pl>
 
 if exists('g:loaded_sad_vim') || v:version < 700 || &cp
     finish
