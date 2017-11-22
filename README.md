@@ -51,8 +51,13 @@ Just use `c_` or `cc`.
 Create your own maps:
 
 ```vim
+" Normal mode
 nmap <leader>s <Plug>(sad-change-forward)
 nmap <leader>S <Plug>(sad-change-backward)
+
+" Visual mode
+xmap <leader>s <Plug>(sad-change-forward)
+xmap <leader>S <Plug>(sad-change-backward)
 ```
 
 ### Are there any easter eggs about name?
@@ -64,6 +69,6 @@ anyway?
 
 - [x] ~~allow setting register which will contain changed text~~
 - [x] ~~do not remap `s` and `S` if there already exist any mapping~~
-- [ ] turn search highlight right after `s{movement}`
+- [x] turn search highlight right after `s{movement}`
 
 [vim-sneak]: https://github.com/justinmk/vim-sneak
