@@ -65,10 +65,16 @@ xmap <leader>S <Plug>(sad-change-backward)
 Not yet. And ever if there would be, then what is the point in telling you
 anyway?
 
+### Why not multiple cursors?
+
+Except obvious corner cases like out of view cursor [multiple cursors doesn't
+play well with gap buffers that are used in Vim and Emacs][gaps].
+
 ## Todo
 
 - [x] ~~allow setting register which will contain changed text~~
 - [x] ~~do not remap `s` and `S` if there already exist any mapping~~
-- [x] turn search highlight right after `s{movement}`
+- [x] ~~turn search highlight right after `s{movement}`~~
 
 [vim-sneak]: https://github.com/justinmk/vim-sneak
+[gaps]: http://nullprogram.com/blog/2017/09/07/
