@@ -12,38 +12,38 @@ function! sad#search(type, ...) abort
     let @v = l:temp
     let @/ = '\V\C' . substitute(escape(l:search, '\'), '\n', '\\n', 'g')
     call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
+    call feedkeys("\<Plug>(sad-enable-hlsearch)")
 
     return l:search
 endfunction
 
-function! sad#search_forward(type, ...) abort
-    call call('sad#search', [a:type] + a:000)
+function! sad#search_forward(...) abort
+    call call('sad#search', a:000)
     call feedkeys("/\<CR>", 'n')
 endfunction
 
-function! sad#search_backward(type, ...) abort
-    call call('sad#search', [a:type] + a:000)
+function! sad#search_backward(...) abort
+    call call('sad#search', a:000)
     call feedkeys("?\<CR>", 'n')
 endfunction
 
-function! sad#search_and_replace_forward(type, ...) abort
+function! s:search_and_replace(dir, ...) abort
     if visualmode() is# ''
         call feedkeys('gv"'.v:register.'c', 'n')
         return
     endif
-    let l:search = call('sad#search', [a:type] + a:000)
+
+    let l:search = call('sad#search', a:000)
     exe 'let @'.v:register.' = "'.escape(l:search, '"').'"'
-    call feedkeys('"'.v:register.'cgn', 'n')
+    call feedkeys('"'.v:register.'cg'.a:dir, 'n')
 endfunction
 
-function! sad#search_and_replace_backward(type, ...) abort
-    if visualmode() is# ''
-        call feedkeys('gv"'.v:register.'c', 'n')
-        return
-    endif
-    let l:search = call('sad#search', [a:type] + a:000)
-    exe 'let @'.v:register.' = "'.escape(l:search, '"').'"'
-    call feedkeys('"'.v:register.'cgN', 'n')
+function! sad#search_and_replace_forward(...) abort
+    call call('s:search_and_replace', ['n'] + a:000)
+endfunction
+
+function! sad#search_and_replace_backward(...) abort
+    call call('s:search_and_replace', ['N'] + a:000)
 endfunction
 
 function! sad#be_happy(bang) abort
