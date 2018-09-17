@@ -22,17 +22,23 @@ xnoremap <silent> <Plug>(sad-change-backward) :<C-u>call sad#search_and_replace_
 nnoremap <expr><silent> <Plug>(sad-change-forward) ':<C-u>set opfunc=sad#search_and_replace_forward<CR>"'.v:register.'g@'
 nnoremap <expr><silent> <Plug>(sad-change-backward) ':<C-u>set opfunc=sad#search_and_replace_backward<CR>"'.v:register.'g@'
 
+func! s:trymap(mode, lhs, rhs) abort
+    if maparg(a:lhs, a:mode) ==# ''
+        exec a:mode.'map <unique> '.a:lhs.' '.a:rhs
+    endif
+endfunc
+
 if !hasmapto('<Plug>(sad-search-forward)') && !hasmapto('<Plug>(sad-search-backward)')
-    xmap <unique> * <Plug>(sad-search-forward)
-    xmap <unique> # <Plug>(sad-search-backward)
+    call s:trymap('x', '*', '<Plug>(sad-search-forward)')
+    call s:trymap('x', '#', '<Plug>(sad-search-backward)')
 endif
 
 if !hasmapto('<Plug>(sad-change-forward)') && !hasmapto('<Plug>(sad-change-backward)')
-    xmap <unique> s <Plug>(sad-change-forward)
-    xmap <unique> S <Plug>(sad-change-backward)
+    call s:trymap('x', 's', '<Plug>(sad-change-forward)')
+    call s:trymap('x', 'S', '<Plug>(sad-change-backward)')
 
-    nmap <unique> s <Plug>(sad-change-forward)
-    nmap <unique> S <Plug>(sad-change-backward)
+    call s:trymap('n', 's', '<Plug>(sad-change-forward)')
+    call s:trymap('n', 'S', '<Plug>(sad-change-backward)')
 endif
 
 nmap <expr> <Plug>(sad-change-forward-linewise) '0"'.v:register.'<Plug>(sad-change-forward)'.v:count1.'g_'
