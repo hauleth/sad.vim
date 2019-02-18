@@ -23,16 +23,8 @@ REPLACE                                    *sad-replace*
                     Afterwards |.| can be used to replace next occurence
                     of deleted text.
 
-                                           *ss*
-["x]{count}ss       Delete {count} lines [into register x] downwards |linewise|.
-                    After that |.| will change next occurence of that lines.
-
                                            *S*
 ["x]S{motion}       Same as |s| but then replaces previous occurence.
-
-                                           *SS*
-["x]{count}SS       Delete {count} lines [into register x] downwards |linewise|.
-                    After that |.| will change previous occurence of that lines.
 
                                            *v_s*
 ["x]{Visual}s       Delete selected text [into register x], set search to it
@@ -52,5 +44,18 @@ Default mappings
 <Plug>(sad-search-backward)         -             |v_#|
 <Plug>(sad-change-forward)          |s|             |v_s|
 <Plug>(sad-change-backward)         |S|             |v_S|
+
+If you want to have linewise actions available as wll then you can use
+
+>
+    nmap ss <Plug>(sad-change-forward-linewise)
+    nmap SS <Plug>(sad-change-backward-linewise)
+<
+
+These mappings aren't currently provided by default as I am not sure what
+mappings would be the best for them. You can state your opinion on this using
+this GitHub issue:
+
+  https://github.com/hauleth/sad.vim/issues/5
 
  vim:tw=78:et:ft=help:norl:
